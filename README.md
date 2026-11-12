@@ -23,3 +23,13 @@ Die Bilder werden im Browser auf dem Gerät verarbeitet und nicht hochgeladen. F
 ## Technik
 
 Die App ist eine installierbare PWA ohne Build-Schritt. Sie verwendet Tesseract.js für OCR und bewertet erkannte Geldbeträge anhand typischer Gesamtbetrag-Bezeichnungen sowie ihrer Position auf dem Bon. Die Erkennung ist ein Vorschlag und sollte vor der Übernahme geprüft werden.
+
+## Android-APK bauen
+
+Das Android-Projekt verpackt dieselbe Oberfläche in eine native WebView-Hülle. Benötigt werden JDK 17 sowie Android SDK Platform 35 und Build Tools 35.0.0. Mit PowerShell lässt sich das debug-signierte APK so bauen:
+
+```powershell
+.\scripts\build-apk.ps1
+```
+
+Die Datei wird unter `dist\Geldmeister.apk` abgelegt. GitHub Actions baut außerdem bei jedem Push auf `start` ein APK-Artefakt. Dieses debug-signierte APK ist zum direkten Installieren auf Android gedacht, nicht für den Play Store.

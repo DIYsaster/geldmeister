@@ -1,0 +1,37 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.diysaster.geldmeister'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.diysaster.geldmeister'
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    sourceSets {
+        main.assets.srcDir(layout.buildDirectory.dir('generated/web-assets'))
+    }
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.12.1'
+    implementation 'androidx.core:core:1.15.0'
+}
+
+def webRoot = rootProject.projectDir.parentFile
+tasks.register('syncWebAssets', Copy) {
+    from(webRoot) {
+        include 'index.html', 'app.js', 'styles.css', 'manifest.webmanifest', 'icon.svg', 'sw.js'
+    }
+    into(layout.buildDirectory.dir('generated/web-assets/www'))
+}
+
+tasks.named('preBuild').configure {
+    dependsOn(tasks.named('syncWebAssets'))
+}
