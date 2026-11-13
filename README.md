@@ -20,6 +20,14 @@ Danach `http://localhost:8000` im Browser öffnen. Für die Installation auf dem
 
 Die Bilder werden im Browser auf dem Gerät verarbeitet und nicht hochgeladen. Für die Texterkennung lädt die App Tesseract.js und das deutsche/englische Sprachmodell von jsDelivr. Zumindest beim ersten Scan wird daher eine Internetverbindung benötigt; das Foto wird dabei nicht übertragen.
 
+## Mit Klarbudget verbinden
+
+Geldmeister kann einen geprüften Bonbetrag lokal an **Klarbudget** im Ordner `C:\DIYsaster\ynab me` übergeben. Dafür in Klarbudget unter **Übersicht → Geldmeister** den Handyempfang starten. PC und Handy müssen im selben vertrauenswürdigen privaten WLAN sein. In der Android-APK die angezeigte PC-Adresse und Einmal-PIN eingeben, Konto und Kategorie wählen, Buchungsdatum und Empfänger prüfen und den Bon ausdrücklich senden.
+
+Die Übergabe verwendet Klarbudgets lokale v1-API über HTTP im privaten LAN. PIN und sitzungsgebundenes Token schützen den Zugriff, verschlüsseln den Netzwerkverkehr aber nicht. Das Sitzungstoken bleibt nur im Arbeitsspeicher und wird beim Beenden der Verbindung verworfen. Die APK sendet nur Betrag in Euro-Cent, Konto- und Kategorie-ID, Datum, Empfänger, Notiz sowie eine zufällige Belegkennung. Foto und erkannter Bontext bleiben auf dem Handy. Vor dem Netzwerkaufruf fragt Android nativ nach einer zusätzlichen Bestätigung. Ein wiederholter Versand derselben Belegkennung erzeugt in Klarbudget keine zweite Buchung.
+
+Die direkte LAN-Übergabe benötigt die Android-APK. In der installierbaren PWA im Browser steht nur der Bon-Scan zur Verfügung.
+
 ## Technik
 
 Die App ist eine installierbare PWA ohne Build-Schritt. Sie verwendet Tesseract.js für OCR und bewertet erkannte Geldbeträge anhand typischer Gesamtbetrag-Bezeichnungen sowie ihrer Position auf dem Bon. Die Erkennung ist ein Vorschlag und sollte vor der Übernahme geprüft werden.

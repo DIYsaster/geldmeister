@@ -134,14 +134,43 @@
               <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="7" width="9" height="10" rx="2"/><path d="M12 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>
               Betrag kopieren
             </button>
+            <button id="budget-send-button" class="button button-budget" type="button">An Klarbudget senden</button>
             <button id="new-scan-button" class="button button-quiet" type="button">Neuen Bon scannen</button>
           </div>
+          <section id="budget-panel" class="budget-panel" aria-labelledby="budget-panel-title" hidden>
+            <div class="budget-panel-heading">
+              <div><p class="step-label"><span>03</span> LOKALE ÜBERGABE</p><h3 id="budget-panel-title">Bon an Klarbudget senden</h3></div>
+              <button id="budget-close-button" class="text-button" type="button" aria-label="Übergabe schließen">Schließen</button>
+            </div>
+            <p class="budget-panel-copy">PC und Handy müssen im selben privaten WLAN sein. Foto und OCR-Text bleiben auf dem Handy; übertragen werden nur die von dir bestätigten Buchungsdaten.</p>
+            <p id="budget-unavailable" class="budget-message" role="status" hidden>Die direkte WLAN-Übergabe ist nur in der Android-APK verfügbar.</p>
+            <div id="budget-pair-form" class="budget-fields">
+              <label class="budget-field">PC-Adresse aus Klarbudget<input id="budget-address" type="url" inputmode="url" autocomplete="url" placeholder="http://192.168.1.20:12345" autocapitalize="off" spellcheck="false" /></label>
+              <label class="budget-field">Einmal-PIN<input id="budget-pin" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="8" pattern="[0-9]{8}" placeholder="8 Ziffern" /></label>
+              <button id="budget-pair-button" class="button button-budget-primary" type="button">Mit Klarbudget koppeln</button>
+            </div>
+            <div id="budget-entry-form" hidden>
+              <p id="budget-connected-label" class="budget-connected-label"></p>
+              <div class="budget-fields">
+                <label class="budget-field">Ausgabenkonto<select id="budget-account"><option value="">Konto wählen</option></select></label>
+                <label class="budget-field">Kategorie<select id="budget-category"><option value="">Kategorie wählen</option></select></label>
+                <label class="budget-field">Buchungsdatum<input id="budget-date" type="date" /></label>
+                <label class="budget-field">Empfänger, optional<input id="budget-payee" type="text" maxlength="120" autocomplete="off" placeholder="z. B. Bäckerei" /></label>
+                <label class="budget-field budget-field-wide">Notiz, optional<input id="budget-memo" type="text" maxlength="500" autocomplete="off" value="Kassenbon" /></label>
+              </div>
+              <p id="budget-entry-summary" class="budget-entry-summary">Betrag, Konto, Kategorie und Datum vor dem Senden prüfen.</p>
+              <button id="budget-entry-button" class="button button-budget-primary button-wide" type="button">Als Ausgabe an Klarbudget senden</button>
+              <button id="budget-disconnect-button" class="text-button budget-disconnect" type="button">Verbindung beenden</button>
+            </div>
+            <p id="budget-message" class="budget-message" role="status" aria-live="polite"></p>
+            <p class="budget-network-warning">Die Verbindung im Heimnetz ist unverschlüsselt. Verwende sie nur in einem vertrauenswürdigen privaten WLAN und gib die PIN nicht weiter.</p>
+          </section>
           <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
         </section>
 
         <section class="privacy-note" aria-label="Datenschutz">
           <div class="privacy-icon" aria-hidden="true"><svg viewBox="0 0 22 22"><path d="M11 2.5 18 5.4v5.5c0 4.2-2.9 7.2-7 8.9-4.1-1.7-7-4.7-7-8.9V5.4l7-2.9Z"/><path d="m8 11 2 2 4-4"/></svg></div>
-          <div><strong>Dein Kassenbon bleibt privat</strong><p>Das Foto bleibt auf deinem Gerät. Beim Scan lädt Geldmeister OCR-Engine und Sprachmodell von jsDelivr; dein Foto wird nicht dorthin übertragen.</p></div>
+          <div><strong>Dein Kassenbon bleibt privat</strong><p>Das Foto bleibt auf deinem Gerät. Beim Scan lädt Geldmeister OCR-Engine und Sprachmodell von jsDelivr; dein Foto wird nicht dorthin übertragen. An Klarbudget gehen nur die Buchungsdaten, die du bestätigst.</p></div>
         </section>
       </main>
 

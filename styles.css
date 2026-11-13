@@ -140,6 +140,26 @@ h2 { margin: 6px 0 0; font-family: 'Segoe UI', system-ui, sans-serif; font-size:
 .ocr-details pre { max-height: 180px; overflow: auto; margin: 9px 0 0; padding: 11px; border-radius: 10px; background: #f0f3e9; color: #677667; font: 10px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; word-break: break-word; }
 .result-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
 .copy-feedback { min-height: 15px; margin: 8px 0 0; color: #6e8649; font-size: 10px; }
+.button-budget { border-color: #dfe8d2; background: #f1f6e8; color: #44664a; }
+.button-budget:hover:not(:disabled) { border-color: #c6d5b6; background: #e8f0dc; }
+.button-budget-primary { background: var(--green); color: #fff; box-shadow: 0 5px 12px rgba(36, 84, 71, .14); }
+.button-budget-primary:hover:not(:disabled) { background: var(--green-dark); }
+.budget-panel { margin-top: 17px; padding: 19px; border: 1px solid #dfe7d6; border-radius: 16px; background: #fff; }
+.budget-panel[hidden], .budget-panel [hidden] { display: none !important; }
+.budget-panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.budget-panel-heading h3 { margin: 6px 0 0; color: #3d5a43; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 17px; letter-spacing: -.45px; }
+.budget-panel-copy { margin: 10px 0 15px; color: #798579; font-size: 10px; line-height: 1.55; }
+.budget-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+.budget-field { display: flex; min-width: 0; flex-direction: column; gap: 6px; color: #718071; font-size: 10px; font-weight: 700; }
+.budget-field-wide { grid-column: 1 / -1; }
+.budget-field input, .budget-field select { width: 100%; min-width: 0; min-height: 43px; padding: 0 11px; border: 1px solid #e0e7d9; border-radius: 10px; background: #fbfcf9; color: #435a49; font: inherit; font-size: 12px; font-weight: 500; }
+.budget-field input:focus-visible, .budget-field select:focus-visible { outline: 2px solid #a9c455; outline-offset: 2px; }
+.budget-fields > .button { grid-column: 1 / -1; }
+.budget-connected-label { margin: 0 0 12px; color: #527040; font-size: 11px; font-weight: 700; line-height: 1.5; }
+.budget-entry-summary { margin: 13px 0 10px; padding: 10px 11px; border-radius: 9px; background: #f4f7ef; color: #546c58; font-size: 10px; font-weight: 650; line-height: 1.5; overflow-wrap: anywhere; }
+.budget-disconnect { margin-top: 9px; }
+.budget-message { margin: 11px 0 0; color: #5e7950; font-size: 10px; line-height: 1.5; }
+.budget-network-warning { margin: 14px 0 0; padding-left: 9px; border-left: 2px solid #d9be7b; color: #8b7650; font-size: 9px; line-height: 1.5; }
 
 .privacy-note { display: flex; gap: 13px; margin: 19px 5px 0; padding: 16px 15px; border: 1px solid rgba(73, 104, 71, .09); border-radius: 15px; background: rgba(236, 242, 227, .64); }
 .privacy-icon { display: grid; width: 30px; height: 30px; flex: 0 0 30px; place-items: center; border-radius: 10px; background: #e2eccb; color: #779052; }
@@ -184,6 +204,9 @@ h2 { margin: 6px 0 0; font-family: 'Segoe UI', system-ui, sans-serif; font-size:
   .match-badge { padding: 6px 8px; font-size: 8px; }
   .amount-field { height: 66px; padding-inline: 13px; }
   .result-actions .button { flex: 1; }
+  .budget-panel { padding: 15px 12px; }
+  .budget-fields { grid-template-columns: minmax(0, 1fr); }
+  .budget-field-wide, .budget-fields > .button { grid-column: auto; }
   .privacy-note { margin-inline: 1px; padding: 14px 12px; }
   .footer { padding-inline: 3px; }
 }
